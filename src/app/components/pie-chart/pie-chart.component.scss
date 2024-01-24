@@ -1,0 +1,36 @@
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .box {
+    .title {
+      text-align: center;
+    }
+    select {
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: white;
+    }
+    .legends {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .legend {
+        display: flex;
+        margin-left: 20%;
+        .color {
+          width: 20px;
+          height: 20px;
+          margin-top: 10px;
+          border-radius: 50%;
+        }
+        .department {
+          margin-top: 10px;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
