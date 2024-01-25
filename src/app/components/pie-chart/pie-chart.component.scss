@@ -13,13 +13,17 @@
       border-radius: 4px;
       background-color: white;
     }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .legends {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      flex-direction: row;
       .legend {
         display: flex;
-        margin-left: 20%;
+        width: 100%;
         .color {
           width: 20px;
           height: 20px;

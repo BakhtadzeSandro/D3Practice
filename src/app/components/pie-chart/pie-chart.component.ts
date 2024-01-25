@@ -16,9 +16,10 @@ export class PieChartComponent {
   private svg: any;
   private colors: any;
   private margin = 50;
-  private width = 700;
-  private height = 550;
+  private width = 500;
+  private height = 450;
   private radius = Math.min(this.width, this.height) / 2 - this.margin;
+  tooltipShown = false;
   filteredData: any;
   colorsArray = ['#C45018', '#33DF47', '#AF3A58', '#CBD621'];
   selectedYear: any;
@@ -86,12 +87,7 @@ export class PieChartComponent {
         console.log('Mouseover:', dataOnHover, d.data);
         this.setTooltips(event, dataOnHover);
       })
-      .on('mouseout', (event: any, d: any) => {
-        // Hide tooltip logic
-        console.log('Mouseout:', d.data);
-
-        // You can add code here to hide the tooltip or revert the UI changes
-      });
+      .on('mouseout', (event: any, d: any) => {});
 
     const labelLocation = d3.arc().innerRadius(100).outerRadius(this.radius);
 
@@ -102,7 +98,9 @@ export class PieChartComponent {
       .append('text')
       .text((d: any) => {
         const percentage =
-          ((d.data.Spending / totalSpending) * 100).toFixed(2) + '%';
+          Math.round(
+            Number(((d.data.Spending / totalSpending) * 100).toFixed(2))
+          ) + '%';
         return percentage;
       })
       .attr(
