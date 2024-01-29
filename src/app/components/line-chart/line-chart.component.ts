@@ -63,8 +63,12 @@ export class LineChartComponent implements OnInit {
       );
   }
   private addXandYAxis() {
+    const maxNum: any = d3.max(this.changedData);
     this.x = d3Scale.scaleLinear().range([0, this.width]);
-    this.y = d3Scale.scaleLinear().range([this.height, 0]);
+    this.y = d3Scale
+      .scaleLinear()
+      .domain([0, 100000000])
+      .range([this.height, 0]);
     let chosenDepartmentData = data.filter((x) => {
       return x.Department == this.selectedDepartment;
     });
@@ -75,7 +79,9 @@ export class LineChartComponent implements OnInit {
     }
 
     this.x.domain(d3Array.extent(this.changedData, (d) => d.year));
-    this.y.domain(d3Array.extent(this.changedData, (d) => d.spending));
+
+    // Dynamically set the y-axis domain based on the extent of spending values
+    this.y.domain([0, d3Array.max(this.changedData, (d) => d.spending)]);
 
     this.svg
       .append('g')

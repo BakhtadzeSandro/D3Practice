@@ -84,7 +84,6 @@ export class PieChartComponent {
           percentage:
             ((d.data.Spending / totalSpending) * 100).toFixed(2) + '%',
         };
-        console.log('Mouseover:', dataOnHover, d.data);
         this.setTooltips(event, dataOnHover);
       })
       .on('mouseout', (event: any, d: any) => {});
