@@ -1,1 +1,14 @@
-<p>bar-chart works!</p>
+<div class="container">
+  <div class="chart">
+    <h4>U.S. Spending from 2018 to 2022</h4>
+    <figure id="bar"></figure>
+  </div>
+  <div class="legends">
+    @for (item of departments; track $index) {
+    <div class="legend">
+      <div class="color" [style.background-color]="item.color"></div>
+      <div class="department">{{ item.department }}</div>
+    </div>
+    }
+  </div>
+</div>

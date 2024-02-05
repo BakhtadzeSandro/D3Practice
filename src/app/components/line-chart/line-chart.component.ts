@@ -79,8 +79,6 @@ export class LineChartComponent implements OnInit {
     }
 
     this.x.domain(d3Array.extent(this.changedData, (d) => d.year));
-
-    // Dynamically set the y-axis domain based on the extent of spending values
     this.y.domain([0, d3Array.max(this.changedData, (d) => d.spending)]);
 
     this.svg
